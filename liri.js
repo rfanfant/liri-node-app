@@ -139,15 +139,17 @@ function runSpotifyThisSong(inputParam) {
             return console.log('Error occurred in runSpotifyThisSong(): ' + err);
         }
 
+        for (var i =0; i < response.tracks.items.length; i++) {
 
-        console.log(response.tracks);
+            var artistArr = function (artist) {
+                return artist.name;
+            }
 
-        for (const key in response.tracks) {
-
-            console.log("Song name: " + response.tracks[key].name);
-            console.log("Preview: " + response.tracks[key].preview_url);
-            console.log("Album: " + response.track[key].album);
-            console.log("Artist(s): " + response.tracks[key].artists);
+            console.log("Song name: " + response.tracks.items[i].name);
+            console.log("Preview: " + response.tracks.items[i].preview_url);
+            console.log("Album: " + response.tracks.items[i].album.name);
+            console.log("Artist(s): " + response.tracks.items[i].album.artists.map(artistArr));
+            console.log("\n");
         }
 
     });
@@ -181,6 +183,8 @@ function runMovieThis(inputParam) {
         .then(function (response) {
             // If the axios was successful...
             // Then log the body from the site!
+            console.log(response.data);
+
             console.log("Movie Title: " + response.data.Title);
 
             console.log("Year released: " + response.data.Year);
@@ -189,7 +193,7 @@ function runMovieThis(inputParam) {
             console.log("Language: " + response.data.Country);
             console.log("Plot: " + response.data.Plot);
             console.log("Actors: " + response.data.Actors);
-            console.log("Rotten Tomatoes rating: " + response.data.Rating['Rotten Tomatoes'].value);
+            console.log("Rotten Tomatoes rating: " + response.data.Ratings[1].Value);
         })
         .catch(function (error) {
             if (error.response) {
