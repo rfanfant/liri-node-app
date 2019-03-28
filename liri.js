@@ -183,10 +183,8 @@ function runMovieThis(inputParam) {
         .then(function (response) {
             // If the axios was successful...
             // Then log the body from the site!
-            console.log(response.data);
 
             console.log("Movie Title: " + response.data.Title);
-
             console.log("Year released: " + response.data.Year);
             console.log("IMDB rating: " + response.data.imdbRating);
             console.log("Country produced: " + response.data.Country);
