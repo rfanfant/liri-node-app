@@ -40,6 +40,46 @@ The application main entry point reads the CLI process.argv arguments and uses a
 
 The input parameters (inputParam) in remaining process.arv string is passed to the appropriate run command to execute the command. 
 
+IMPORTANT
+---------
+
+Due to the fact that secret keys are needed to used several files need to be created in order to protect your secret keys. 
+
+FIRST: A .gitignore was created in order to tell github not to upload the .env file which contains the secret Spotify user/password keys. The following changes are required if  you would like to properly make this application work/run in your environmet.
+
+SECOND: head to https://developer.spotify.com/dashboard/ and create and account to obtain your own ID and SECRET key. 
+
+THIRD:  Create a file named .env . In the .env file include the following 
+.....
+# Spotify API keys
+
+SPOTIFY_ID=your-spotify-id
+SPOTIFY_SECRET=your-spotify-secret
+....
+
+
+FOURTH: This file will be used by the `dotenv` package to set what are known as environment variables to the global `process.env` object in node. These are values that are meant to be specific to the computer that node is running on, and since we are gitignoring this file, they won't be pushed to github &mdash; keeping our API key information private.
+
+
+END IMPORTANT:
+--------------
+
+FYI
+---
+
+Please review the following documentation concerning the Node libraries used for additional information about how the application works
+   * [Node-Spotify-API](https://www.npmjs.com/package/node-spotify-api)
+
+   * [Axios](https://www.npmjs.com/package/axios)
+
+     * You'll use Axios to grab data from the [OMDB API](http://www.omdbapi.com) and the [Bands In Town API](http://www.artists.bandsintown.com/bandsintown-api)
+
+   * [Moment](https://www.npmjs.com/package/moment)
+
+   * [DotEnv](https://www.npmjs.com/package/dotenv)
+
+
+
 
 
 
